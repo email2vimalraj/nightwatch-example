@@ -1,0 +1,13 @@
+{
+  "name": "nightwatch-example",
+  "version": "1.0.0",
+  "description": "A playground to experiment nightwatch",
+  "main": "index.js",
+  "author": "Vimalraj Selvam",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chromedriver": "^2.29.0",
+    "nightwatch": "^0.9.15"
+  }
+}
