@@ -20,33 +20,33 @@ Let's start!
 ## Sample code
 This is an optional step. The example that we are going to see in this article are available in the github. Follow the steps to clone and run:
 
-```bash
+[code lang='bash']
 git clone https://github.com/email2vimalraj/nightwatch-example.git
 cd nightwatch-example
 yarn
-```
+[/code]
 
 ## Setup
 Create a directory:
 
-```bash
+[code lang='bash']
 mkdir nightwatch-example
 cd nightwatch-example
-```
+[/code]
 
 Initiate the node js project using:
 
-```bash
+[code lang='bash']
 yarn init
-```
+[/code]
 
 Accept all the default parameters which yarn prompts.
 
 Install NightwatchJS as dev dependency using:
 
-```bash
+[code lang='bash']
 yarn add --dev nightwatch
-```
+[/code]
 
 ## Configuration
 The nightwatch test runner uses the json file which is used as configuration for the test runner.
@@ -55,7 +55,7 @@ By default, if a file called <b>nightwatch.json</b> available in the current dir
 
 Let's create the following <b>nightwatch.json</b> in the project's root directory:
 
-```json
+[code lang='js']
 {
   "src_folders": ["tests"],
   "output_folder": "reports",
@@ -69,7 +69,7 @@ Let's create the following <b>nightwatch.json</b> in the project's root director
     }
   }
 }
-```
+[/code]
 
 <em>src_folder</em> - will contain a list of folders where the test scripts are placed. In this example, we'll be keeping all our tests in the <b>tests</b> directory
 
@@ -88,25 +88,25 @@ There are two ways to configure Chromedriver to automate on the chrome browser.
 
 In this example, we will be using the Standalone usage since there is no dependency on Java. But it requires a one-time configuration. Let's install the <b>ChromeDriver</b> npm package:
 
-```bash
+[code lang='bash']
 yarn add --dev chromedriver
-```
+[/code]
 
 Then disable the selenium server in the <em>nightwatch.json</em> file by adding the following configuration at the end:
 
-```json
+[code lang='js']
 "selenium": {
   "start_process": false
 },
-```
+[/code]
 
 Then in the <b>test_settings</b> configuration, we'll have to configure the selenium port and host since the default port used by chromedriver is <b>9515</b>. Let's update the <b>test_settings</b> config:
 
-```json
+[code lang='js']
 "selenium_port": 9515,
 "selenium_host": "localhost",
 "default_path_prefix": ""
-```
+[/code]
 
 We have to clear the <em>default_path_prefix</em>, as it is by default set to <em>/wd/hub</em> which chromedriver doesn't require it.
 
@@ -115,7 +115,7 @@ A global file is the js file which will be loaded by the test runner and made av
 
 Let's create a file called <b>chromedriver.global.js</b>:
 
-```js
+[code lang='js']
 var chromedriver = require('chromedriver');
 
 module.exports = {
@@ -129,17 +129,17 @@ module.exports = {
     done();
   }
 };
-```
+[/code]
 
 Now we'll have to load this file through the configuration file. Add the following config at the end of the <em>nightwatch.json</em>:
 
-```json
+[code lang='js']
 "globals_path": "./chromedriver.global.js"
-```
+[/code]
 
 Our <em>nightwatch.json</em> should look like this now:
 
-```json
+[code lang='js']
 {
   "src_folders": ["tests"],
   "output_folder": "reports",
@@ -162,12 +162,12 @@ Our <em>nightwatch.json</em> should look like this now:
 
   "globals_path": "./chromedriver.global.js"
 }
-```
+[/code]
 
 ## Create our first test
 Let's create a <b>HomeTest.js</b> file in the <b>tests</b> directory:
 
-```js
+[code lang='js']
 module.exports = {
 
   "Test Home Page": function (client) {
@@ -179,7 +179,7 @@ module.exports = {
   }
 
 };
-```
+[/code]
 
 Each file in the <em>tests</em> directory is considered as test suite. Here, in the <em>HomeTest.js</em> we have created one test called <b>Test Home Page</b>. Each test function will have one parameter which holds the webdriver instance. Here, we are calling that instance as <b>client</b>. All the nightwatch webdriver commands are accessed through this instance.
 
@@ -192,13 +192,13 @@ The <em>client.end()</em> is mandatory to close the browser instance and stop th
 
 Let's execute our first test. Spin off your terminal / command prompt, and execute your test as follows:
 
-```bash
+[code lang='bash']
 ./node_modules/.bin/nightwatch
-```
+[/code]
 
 This should execute your tests and you can watch the result in your console:
 
-```bash
+[code lang='bash']
 [Home Test] Test Suite
 ==========================
 
@@ -208,11 +208,11 @@ Running:  Test Home Page
  ✔ Expected element <.heading> text to equal: "Welcome to the Internet"
 
 OK. 3 assertions passed. (20.669s)
-```
+[/code]
 
 Awesome, we successfully created our test and executed. Let's add one more test:
 
-```js
+[code lang='js']
 module.exports = {
 
   "Test Home Page": function (client) {
@@ -229,7 +229,7 @@ module.exports = {
   }
 
 };
-```
+[/code]
 
 Here we have added another test called <b>Navigate to Broken Images page</b> in which we navigate to the <b>Broken Images</b> page and assert the heading.
 Note that we have removed the <em>client.end()</em> from the first test and moved that to the second test.
