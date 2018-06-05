@@ -241,3 +241,9 @@ Finally, we have two tests which runs successfully.
 In the next part, we'll make our tests more maintainable using page object pattern.
 
 <u>P.S</u>: If you liked this post, feel free to like and share.
+
+
+# Handling multiple elements
+Many of the times, you will come across a situation to handle multiple elements with the same type, may be get the text, perform some actions iteratively on each identified element and so on. Here we'll see how to handle multiple checkboxes, get the text and print, and select the checkbox if not already selected.
+
+Let's create a new test in our <b>HomeTest.js</b>.
